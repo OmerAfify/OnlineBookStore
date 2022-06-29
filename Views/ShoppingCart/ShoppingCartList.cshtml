@@ -1,0 +1,101 @@
+﻿
+@model ShoppingCart
+
+
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>cart</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item active">cart</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+    <!--section start-->
+    <section class="cart-section section-b-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table cart-table table-responsive-xs">
+                        <thead>
+                            <tr class="table-head">
+                                <th scope="col">image</th>
+                                <th scope="col">book name</th>
+                                <th scope="col">price</th>
+                                <th scope="col">quantity</th>
+                                <th scope="col">action</th>
+                                <th scope="col">total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--<tr> is a single product-->
+                        @foreach(var cartitem in Model.cartItemList) {
+                         <tr>
+                            <td>
+                               <a href="#"><img src="@string.Format("/UploadedFiles/Images/BookItemsImages/{0}",cartitem.bookItem.bookItemImageName)" alt=""></a>
+                            </td>
+                            <td>
+                               <a href="#">@cartitem.bookItem.bookItemName</a>
+                        
+                            </td>
+                            <td>
+                                <h2>@cartitem.bookItem.purchasePrice EGP</h2>
+                            </td>
+                            <td>
+                                <div class="qty-box">
+                                    <div class="input-group">
+                                        <input type="number" data-ItemsPrice="@cartitem.bookItem.purchasePrice" name="quantity" class="form-control input-number" value="@cartitem.itemQuantity">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@cartitem.bookItemId" class="icon">
+                                    <i class="ti-close"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <h2 class="td-color">@cartitem.totalItemPrice</h2>
+                            </td>
+                        </tr>
+                       }
+
+                        </tbody>
+                        </table>
+                    <table class="table cart-table table-responsive-md">
+                        <tfoot>
+                            <tr>
+                                <td>total Quantity :</td>
+                                <td>
+                                    <h2 >@Model.totalCartQuantity </h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>total price :</td>
+                                <td>
+                                    <h2>@Model.totalCartPrice EGP</h2>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="row cart-buttons">
+                <div class="col-6"><a asp-controller="Home" asp-action="Index" class="btn btn-solid">continue shopping</a></div>
+                <div class="col-6"><a href="#" class="btn btn-solid">check out</a></div>
+            </div>
+        </div>
+    </section>
+    <!--section end-->
+ 

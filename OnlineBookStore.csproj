@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20220619161541_ItemsAndCategoriesRelationAcceptsNull.cs" />
+    <Compile Remove="Migrations\20220619161541_ItemsAndCategoriesRelationAcceptsNull.Designer.cs" />
+    <Compile Remove="Migrations\20220619161652_ItemsAndCategoriesRelationAcceptsNull.cs" />
+    <Compile Remove="Migrations\20220619161652_ItemsAndCategoriesRelationAcceptsNull.Designer.cs" />
+    <Compile Remove="Migrations\20220619161847_ItemsAndCategoriesRelationAcceptsNull.cs" />
+    <Compile Remove="Migrations\20220619161847_ItemsAndCategoriesRelationAcceptsNull.Designer.cs" />
+    <Compile Remove="Migrations\20220619161930_ItemsAndCategoriesRelationAcceptsNull.cs" />
+    <Compile Remove="Migrations\20220619161930_ItemsAndCategoriesRelationAcceptsNull.Designer.cs" />
+    <Compile Remove="Migrations\20220619162020_ItemsAndCategoriesRelationAcceptsNull.cs" />
+    <Compile Remove="Migrations\20220619162020_ItemsAndCategoriesRelationAcceptsNull.Designer.cs" />
+    <Compile Remove="Migrations\20220619162425_ItemsAndCategoriesRelationAcceptsNull.cs" />
+    <Compile Remove="Migrations\20220619162425_ItemsAndCategoriesRelationAcceptsNull.Designer.cs" />
+    <Compile Remove="Migrations\20220619173342_virtual.cs" />
+    <Compile Remove="Migrations\20220619173342_virtual.Designer.cs" />
+    <Compile Remove="Migrations\20220621112216_ImageNameAddedToBookItemsTable.cs" />
+    <Compile Remove="Migrations\20220621112216_ImageNameAddedToBookItemsTable.Designer.cs" />
+    <Compile Remove="Migrations\20220624114411_DiscountAndBookImageTablesIsAdded.cs" />
+    <Compile Remove="Migrations\20220624114411_DiscountAndBookImageTablesIsAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220624115852_DiscountAndBookImageTablesIsAdded.cs" />
+    <Compile Remove="Migrations\20220624115852_DiscountAndBookImageTablesIsAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220624121706_DiscountAndBookImageTablesIsAdded2.cs" />
+    <Compile Remove="Migrations\20220624121706_DiscountAndBookImageTablesIsAdded2.Designer.cs" />
+    <Compile Remove="Migrations\20220624122039_DiscountAndBookImageTablesIsAdded.cs" />
+    <Compile Remove="Migrations\20220624122039_DiscountAndBookImageTablesIsAdded.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\UploadedFiles\Images\BookItemsImages\" />
+    <Folder Include="wwwroot\UploadedFiles\Images\ParallaxBannerImages\" />
+    <Folder Include="wwwroot\UploadedFiles\Images\SlidersImages\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,35 @@
+[
+    {
+        "outputFileName": "wwwroot/site.min.css",
+        "inputFiles": [
+            "https://fonts.googleapis.com/css?family=Lato:300,400,700,900",
+            "wwwroot/WebsiteAssets/css/fontawesome.css",
+            "wwwroot/WebsiteAssets/css/slick.css",
+            "wwwroot/WebsiteAssets/css/slick-theme.css",
+            "wwwroot/WebsiteAssets/css/animate.css",
+            "wwwroot/WebsiteAssets/css/themify-icons.css",
+            "wwwroot/WebsiteAssets/css/bootstrap.css"
+            //theme is outside
+
+        ]
+    },
+    {
+        "outputFileName": "wwwroot/site.min.js",
+        "inputFiles": [
+            "wwwroot/WebsiteAssets/js/jquery-3.3.1.min.js",
+            "wwwroot/WebsiteAssets/js/slick.js",
+            "wwwroot/WebsiteAssets/js/menu.js",
+            "wwwroot/WebsiteAssets/js/lazysizes.min.js",
+            "wwwroot/WebsiteAssets/js/bootstrap.min.js",
+            "wwwroot/WebsiteAssets/js/bootstrap-notify.min.js",
+            "wwwroot/WebsiteAssets/js/script.js"
+
+        ],
+        "minify": {
+            "enabled": true,
+            "renameLocals": true
+        },
+        "sourceMap": false
+    }
+ 
+]

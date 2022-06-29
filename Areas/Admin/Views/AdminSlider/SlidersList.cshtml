@@ -1,0 +1,98 @@
+﻿
+@model List<Slider>
+
+
+ <!-- BEGIN: Content-->
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="header-navbar-shadow"></div>
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-9 col-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="col-12">
+                        <h2 class="content-header-title float-left mb-0">Bootstrap Tables</h2>
+                        <div class="breadcrumb-wrapper col-12">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    Table
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+                <div class="form-group breadcrum-right">
+                    <div class="dropdown">
+                        <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-settings"></i></button>
+                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a class="dropdown-item" href="#">Calendar</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <!-- Basic Tables start -->
+            <div class="row" id="basic-table">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Sliders List</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                         
+                                <a asp-controller="AdminSlider" asp-action="AddSlider">
+                                    <button class="btn btn-success col-12">Add a new Slider</button>
+                                </a>
+
+
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Slider ID</th>
+                                                <th>Slider Image</th>
+                                                <th>Slider Title</th>
+                                                <th>Slider Description</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var slider in Model)
+                                            {
+
+                                                <tr>
+                                                    <th scope="row">@slider.sliderId</th>
+                                                    <td><img src="@string.Format("/UploadedFiles/Images/SlidersImages/{0}",slider.sliderImageName)" style="width:100px; height:150px" /></td>
+                                                    <td>@slider.sliderTitle</td>
+                                                    <td>@slider.sliderDescription</td>
+                                                    <td><a asp-controller="AdminSlider" asp-action="EditSlider" asp-route-id="@slider.sliderId"> <button class="btn btn-primary">Edit</button></a></td>
+                                                    <td><a asp-controller="AdminSlider" asp-action="DeleteSlider" asp-route-id="@slider.sliderId"> <button class="btn btn-danger">Delete</button></a></td>
+
+                                                </tr>
+
+                                            }
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Basic Tables end -->
+
+        </div>
+    </div>
+</div>
+<!-- END: Content-->
