@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace OnlineBookStore.Models
 {
-    public class OnlineBookStoreDbContext : DbContext
+    public class OnlineBookStoreDbContext : IdentityDbContext<ApplicationIdentiyUser>
     {
         public OnlineBookStoreDbContext() { }
         public OnlineBookStoreDbContext(DbContextOptions<OnlineBookStoreDbContext> options):base(options) { }
@@ -20,6 +22,8 @@ namespace OnlineBookStore.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             //1 to M relationship BookCategory and BookItem
             modelBuilder.Entity<BookItem>()
                 .HasOne(bi => bi.bookCategory)

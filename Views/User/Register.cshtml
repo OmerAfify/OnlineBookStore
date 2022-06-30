@@ -1,0 +1,99 @@
+﻿@model UserIdentityModel
+
+<!-- breadcrumb start -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>create account</h2>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">create account</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb End -->
+<!--section start-->
+
+
+
+<section class="register-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>create account</h3>
+                @if (ViewBag.errors != null)
+                {
+                        <ul>
+                            @foreach (var error in @ViewBag.errors)
+                            {
+                                <li style="color:red">
+                                    @error.Description
+                                </li>
+                                <br/>
+                            }
+                        </ul>
+                   
+                }
+
+                <div class="theme-card">
+
+                    <form class="theme-form" method="post" role="form" asp-controller="User" asp-action="Register">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="email">First Name</label>
+                                <input type="text" style="margin:5px" class="form-control" id="fname" placeholder="First Name" asp-for="firstName" required="">
+                                <span class="text-danger" asp-validation-for="firstName"></span>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Last Name</label>
+                                <input type="text" style="margin:5px" class="form-control" id="lname" placeholder="Last Name"
+                                       asp-for="lastName" required="">
+
+                                <span class="text-danger" asp-validation-for="lastName"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="email">email</label>
+                                <input type="text" style="margin:5px" asp-for="email" class="form-control" id="email" placeholder="Email" required="">
+
+                                <span class="text-danger" asp-validation-for="email"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Password</label>
+                                <div>
+                                    <input type="password" style="margin:5px" class="form-control" id="review"
+                                           asp-for="password" placeholder="Enter your password" required="">
+                                    <span class="text-danger" asp-validation-for="password"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <br /><br /><br />
+                                <label>
+                                    Already have an account?  <a asp-action="Login"><span style="color:khaki"> Login </span></a>
+                                </label>
+                                <br /> <br />
+
+                                <button type="reset" class="btn btn-solid">Reset</button>
+                                <button type="submit" class="btn btn-solid">create Account</button>
+
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section ends-->

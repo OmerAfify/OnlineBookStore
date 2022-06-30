@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OnlineBookStore.Business_Layer;
@@ -13,6 +14,7 @@ using OnlineBookStore.ViewModels;
 namespace OnlineBookStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles ="Admin")]
     public class AdminBookItemController : Controller
     {
 
@@ -53,10 +55,6 @@ namespace OnlineBookStore.Areas.Admin.Controllers
 
         public IActionResult EditBookItem(int id)
         {
-
-            // ViewBag.bookCategoriesList = bookItemService.GetBookCategoriesList().ToList();
-            //var item = bookItemService.GetBookItemById(id);
-            //return View("AddBookItem",item);  
 
 
             BookItemAndBookCategoriesViewModel vm = new BookItemAndBookCategoriesViewModel()

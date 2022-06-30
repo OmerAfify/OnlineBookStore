@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -53,14 +55,37 @@ services.AddControllersWithViews()
 
             //Dependency Injection
            // services.AddControllersWithViews();
-
-
             services.AddDbContext<OnlineBookStoreDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+            //Idenity Framework service
+            services.AddIdentity<ApplicationIdentiyUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 8;
+                options.User.RequireUniqueEmail = true;
+
+            }).AddEntityFrameworkStores<OnlineBookStoreDbContext>();
+
+
+        
+
 
             services.AddScoped<IBookItemServices, BookItemServices>();
             services.AddScoped<IBookCategoryServices, BookCategoryServices>();
             services.AddScoped<ISliderServices, SliderServices>();
+
+            services.ConfigureApplicationCookie(options => {
+
+                options.AccessDeniedPath = "/User/AccessDenied";
+                options.Cookie.Name = "UserCookie";
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(720);
+                options.LoginPath="/User/Login";
+                options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+                options.SlidingExpiration = true;
+
+            });
 
             
 
@@ -85,10 +110,12 @@ services.AddControllersWithViews()
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseSession();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+        
 
             app.UseEndpoints(endpoints =>
             {

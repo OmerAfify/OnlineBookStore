@@ -29,11 +29,14 @@
     <Compile Remove="Migrations\20220624121706_DiscountAndBookImageTablesIsAdded2.Designer.cs" />
     <Compile Remove="Migrations\20220624122039_DiscountAndBookImageTablesIsAdded.cs" />
     <Compile Remove="Migrations\20220624122039_DiscountAndBookImageTablesIsAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220630102802_ApplicationIdentityTablesWithExtraPropertiesAdded.cs" />
+    <Compile Remove="Migrations\20220630102802_ApplicationIdentityTablesWithExtraPropertiesAdded.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineBookStore.Interfaces;
 using OnlineBookStore.ViewModels;
@@ -31,9 +32,11 @@ namespace OnlineBookStore.Controllers
             return View(vm);
         }
 
+
+
+        [Authorize(Roles = "Customer")]
         public IActionResult BookItemList()
         {
-        
             return View();
         }
 

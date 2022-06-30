@@ -86,3 +86,7 @@ D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\bin\Debug
 D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\User\Register.cshtml.g.cs
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\User\AccessDenied.cshtml.g.cs
