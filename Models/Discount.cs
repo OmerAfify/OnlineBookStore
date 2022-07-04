@@ -13,6 +13,6 @@ namespace OnlineBookStore.Models
         public DateTime discountStartingDate { get; set; }
         public DateTime discountEndingDate { get; set; }
         public int bookItemId { get; set; }
-        public BookItem bookItem { get; set; }
+        public virtual BookItem bookItem { get; set; }
     }
 }

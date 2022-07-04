@@ -13,9 +13,11 @@ namespace OnlineBookStore.Controllers
     public class ShoppingCartController : Controller
     {
         private IBookItemServices bookItemServices;
-        public ShoppingCartController(IBookItemServices bookItemServices)
+        private OnlineBookStoreDbContext _context;
+        public ShoppingCartController(IBookItemServices bookItemServices, OnlineBookStoreDbContext context)
         {
             this.bookItemServices = bookItemServices;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -54,20 +56,20 @@ namespace OnlineBookStore.Controllers
                 {
                     bookItemId = bookItem.bookItemId,
                     bookItem = bookItem,
-                    itemQuantity = 1,
+                    totalItemQuantity = 1,
                     totalItemPrice = bookItem.purchasePrice
                 };
+
                 shoppingCart.cartItemList.Add(CartItemToAdd);
             }
             else
             {
-                CartItemToAdd.itemQuantity = CartItemToAdd.itemQuantity + 1;
-                CartItemToAdd.totalItemPrice = CartItemToAdd.itemQuantity * bookItem.purchasePrice;
-
+                CartItemToAdd.totalItemQuantity = CartItemToAdd.totalItemQuantity + 1;
+                CartItemToAdd.totalItemPrice = CartItemToAdd.totalItemQuantity * bookItem.purchasePrice;
             }
 
-            shoppingCart.totalCartQuantity = shoppingCart.cartItemList.Sum(q => q.itemQuantity);
-            shoppingCart.totalCartPrice = shoppingCart.cartItemList.Sum(p => p.totalItemPrice);
+            shoppingCart.totalShoppingCartQuantity = shoppingCart.cartItemList.Sum(q => q.totalItemQuantity);
+            shoppingCart.totalShoppingCartPrice = shoppingCart.cartItemList.Sum(p => p.totalItemPrice);
 
             HttpContext.Session.SetObjectToJson("shoppingCart", shoppingCart);
             return RedirectToAction("ShoppingCartList");
@@ -78,19 +80,29 @@ namespace OnlineBookStore.Controllers
         {
             ShoppingCart shoppingCart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("shoppingCart");
 
-
             BookItem bookItem = bookItemServices.GetBookItemById(id);
 
             var CartItemToRemove = shoppingCart.cartItemList.Where(i => i.bookItemId == bookItem.bookItemId).FirstOrDefault();
              shoppingCart.cartItemList.Remove(CartItemToRemove);
 
-            shoppingCart.totalCartQuantity = shoppingCart.cartItemList.Sum(q => q.itemQuantity);
-            shoppingCart.totalCartPrice = shoppingCart.cartItemList.Sum(p => p.totalItemPrice);
+            shoppingCart.totalShoppingCartQuantity = shoppingCart.cartItemList.Sum(q => q.totalItemQuantity);
+            shoppingCart.totalShoppingCartPrice = shoppingCart.cartItemList.Sum(p => p.totalItemPrice);
 
 
             HttpContext.Session.SetObjectToJson("shoppingCart", shoppingCart);
             return RedirectToAction("ShoppingCartList");
 
         }
+
+
+      
+        public IActionResult SaveItemsToCart()
+        {
+            return Redirect("~/");
+        }
+
+
+
+
     }
 }

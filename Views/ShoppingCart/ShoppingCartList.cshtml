@@ -56,7 +56,7 @@
                             <td>
                                 <div class="qty-box">
                                     <div class="input-group">
-                                        <input type="number" data-ItemsPrice="@cartitem.bookItem.purchasePrice" name="quantity" class="form-control input-number" value="@cartitem.itemQuantity">
+                                        <input type="number" data-ItemsPrice="@cartitem.bookItem.purchasePrice" name="quantity" class="form-control input-number" value="@cartitem.totalItemQuantity">
                                     </div>
                                 </div>
                             </td>
@@ -78,13 +78,13 @@
                             <tr>
                                 <td>total Quantity :</td>
                                 <td>
-                                    <h2 >@Model.totalCartQuantity </h2>
+                                    <h2 >@Model.totalShoppingCartQuantity </h2>
                                 </td>
                             </tr>
                             <tr>
                                 <td>total price :</td>
                                 <td>
-                                    <h2>@Model.totalCartPrice EGP</h2>
+                                    <h2>@Model.totalShoppingCartPrice EGP</h2>
                                 </td>
                             </tr>
                         </tfoot>
@@ -93,7 +93,7 @@
             </div>
             <div class="row cart-buttons">
                 <div class="col-6"><a asp-controller="Home" asp-action="Index" class="btn btn-solid">continue shopping</a></div>
-                <div class="col-6"><a href="#" class="btn btn-solid">check out</a></div>
+                <div class="col-6"><a asp-controller="Order" asp-action="Checkout" class="btn btn-solid">check out</a></div>
             </div>
         </div>
     </section>

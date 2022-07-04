@@ -18,7 +18,10 @@ namespace OnlineBookStore.Models
         public DbSet<Slider> Tb_Slider { get; set; }
         public DbSet<Discount> Tb_Discount { get; set; }
         public DbSet<Slider> Tb_BookItemsImages { get; set; }
-
+      
+        public DbSet<Order> Tb_Orders { get; set; }
+        public DbSet<OrderDetails> Tb_OrderDetails { get; set; }
+        public DbSet<OrderedItem> Tb_OrderedItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +43,15 @@ namespace OnlineBookStore.Models
             modelBuilder.Entity<Discount>()
              .Property(b => b.discountStartingDate)
             .HasDefaultValueSql("getdate()");
+
+
+            //Orders
+            modelBuilder.Entity<Order>().HasOne(u => u.user).WithMany();
+            modelBuilder.Entity<OrderDetails>().HasOne(o=>o.order).WithOne(od=>od.orderDetails);
+            modelBuilder.Entity<OrderedItem>().HasKey(o=>new {o.orderDetailsId, o.bookItemId });
+
+       
+
 
         }
     }

@@ -90,3 +90,7 @@ D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug
 D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\User\Register.cshtml.g.cs
 D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\User\AccessDenied.cshtml.g.cs
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\ShoppingCart\SaveItemsToCart.cshtml.g.cs
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\Order\Checkout.cshtml.g.cs
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\Order\OrderSuccess.cshtml.g.cs
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\Order\TrackOrders.cshtml.g.cs

@@ -28,8 +28,9 @@ namespace OnlineBookStore.Models
 
 
         [Required(ErrorMessage = "please enter Category")]
+     
+        
         public int bookCategoryId { get; set; }
-
         public virtual BookCategory bookCategory { get; set; }
 
         public List<Discount> discountList { get; set; }

@@ -31,6 +31,28 @@
     <Compile Remove="Migrations\20220624122039_DiscountAndBookImageTablesIsAdded.Designer.cs" />
     <Compile Remove="Migrations\20220630102802_ApplicationIdentityTablesWithExtraPropertiesAdded.cs" />
     <Compile Remove="Migrations\20220630102802_ApplicationIdentityTablesWithExtraPropertiesAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220702175747_OrdersTablesAdded.cs" />
+    <Compile Remove="Migrations\20220702175747_OrdersTablesAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220702180054_OrdersTablesAdded.cs" />
+    <Compile Remove="Migrations\20220702180054_OrdersTablesAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220702181418_OrdersTablesAdded.cs" />
+    <Compile Remove="Migrations\20220702181418_OrdersTablesAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220703080750_1ToMuserOrdersRelationisAdded.cs" />
+    <Compile Remove="Migrations\20220703080750_1ToMuserOrdersRelationisAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220703080925_1ToMuserOrdersRelationisAdded.cs" />
+    <Compile Remove="Migrations\20220703080925_1ToMuserOrdersRelationisAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220703081049_1ToMuserOrdersRelationisUpdated.cs" />
+    <Compile Remove="Migrations\20220703081049_1ToMuserOrdersRelationisUpdated.Designer.cs" />
+    <Compile Remove="Migrations\20220703105249_ShoppingCartAdded.cs" />
+    <Compile Remove="Migrations\20220703105249_ShoppingCartAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220703171250_UpdateChanges.cs" />
+    <Compile Remove="Migrations\20220703171250_UpdateChanges.Designer.cs" />
+    <Compile Remove="Migrations\20220703175126_UpdateChanges2.cs" />
+    <Compile Remove="Migrations\20220703175126_UpdateChanges2.Designer.cs" />
+    <Compile Remove="Migrations\20220703182927_OrdersAddedV2.cs" />
+    <Compile Remove="Migrations\20220703182927_OrdersAddedV2.Designer.cs" />
+    <Compile Remove="Migrations\20220704082903_Test.cs" />
+    <Compile Remove="Migrations\20220704082903_Test.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

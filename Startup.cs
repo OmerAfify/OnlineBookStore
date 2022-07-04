@@ -74,6 +74,7 @@ services.AddControllersWithViews()
             services.AddScoped<IBookItemServices, BookItemServices>();
             services.AddScoped<IBookCategoryServices, BookCategoryServices>();
             services.AddScoped<ISliderServices, SliderServices>();
+            services.AddScoped<IOrderServices, OrderServices>();
 
             services.ConfigureApplicationCookie(options => {
 
@@ -119,14 +120,17 @@ services.AddControllersWithViews()
 
             app.UseEndpoints(endpoints =>
             {
-
+ 
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+                
+                
                 endpoints.MapControllerRoute(
                     name: "areas",
                     pattern: "{area=exists}/{controller=Home}/{action=Index}");
+
+
 
             });
 

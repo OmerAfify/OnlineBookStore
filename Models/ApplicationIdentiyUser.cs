@@ -8,8 +8,14 @@ namespace OnlineBookStore.Models
 {
     public class ApplicationIdentiyUser : IdentityUser
     {
+        public ApplicationIdentiyUser()
+        {
+
+        }
+
         public string firstName { get; set; }
         public string lastName { get; set; }
+
 
     }
 }

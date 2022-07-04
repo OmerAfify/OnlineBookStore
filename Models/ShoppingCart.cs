@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 namespace OnlineBookStore.Models
 {
     public class ShoppingCart
-
     {
         public virtual List<CartItem> cartItemList { get; set; }
-        public decimal totalCartPrice { get; set; }
-        public int totalCartQuantity { get; set; }
+        public decimal totalShoppingCartPrice { get; set; }
+        public int totalShoppingCartQuantity { get; set; }
     }
 }

@@ -24,5 +24,6 @@ namespace OnlineBookStore.Models
         public string password { get; set; }
 
         public string returnUrl { get; set; }
+
     }
 }
