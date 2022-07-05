@@ -426,68 +426,14 @@
                                         <li>
                                             <a asp-controller="BookItem" asp-action="BookItemList">shop</a>
                                         </li>
-                                        <li>
-                                            <a href="#">product</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="#">sidebar</a>
-                                                    <ul>
-                                                        <li><a href="product-page.html">left sidebar</a></li>
-                                                        <li>
-                                                            <a href="product-page(right-sidebar).html">right sidebar</a>
-                                                        </li>
-                                                        <li><a href="product-page(no-sidebar).html">no sidebar</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">thumbnail image</a>
-                                                    <ul>
-                                                        <li><a href="product-page(left-image).html">left image</a></li>
-                                                        <li>
-                                                            <a href="product-page(right-image).html">right image</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-page(image-outside).html">
-                                                                image outside
-                                                                <span class="new-tag">new</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="#">three column</a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="product-page(3-col-left).html">thumbnail left</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-page(3-col-right).html">thumbnail right</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-page(3-column).html">thubnail bottom</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="product-page(4-image).html">
-                                                        4 image <span class="new-tag">new</span>
-                                                    </a>
-                                                </li>
-                                                <li><a href="product-page(sticky).html">sticky</a></li>
-                                                <li><a href="product-page(accordian).html">accordian</a></li>
-                                                <li>
-                                                    <a href="product-page(bundle).html">
-                                                        bundle<span class="new-tag">new</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product-page(image-swatch).html">
-                                                        image swatch <span class="new-tag">new</span>
-                                                    </a>
-                                                </li>
-                                                <li><a href="product-page(vertical-tab).html">vertical tab</a></li>
-                                            </ul>
-                                        </li>
+
+                                        @if (signInManager.IsSignedIn(User))
+                                        {
+                                            <li>
+                                                <a asp-controller="Order" asp-action="TrackOrders">View My Orders</a>
+                                            </li>
+                                        }
+
 
                                     </ul>
                                 </nav>

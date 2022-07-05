@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using OnlineBookStore.Interfaces;
 using OnlineBookStore.Models;
 
@@ -16,13 +17,16 @@ namespace OnlineBookStore.Business_Layer
             _context = context;
         }
 
+
+
+
         public void addOrder(Order order)
         {
-
             _context.Tb_Orders.Add(order);
             _context.SaveChanges();
 
         }
+
 
         public void addOrderDetails(OrderDetails orderDetails)
         {
@@ -38,7 +42,19 @@ namespace OnlineBookStore.Business_Layer
         }
 
 
-        
+
+
+        public List<Order> viewUsersOrders(string userId)
+        {
+          var orders = _context.Tb_Orders.Where(o => o.userId == userId)
+             .Include(od => od.orderDetails)
+                .ThenInclude(oi => oi.orderedItems)
+                    .ThenInclude(bi => bi.bookItem)
+                        .ToList();
+
+            return orders;
+        }
+
 
     }
 }

@@ -15,6 +15,7 @@ namespace OnlineBookStore.Helpers
             CreateMap<BookItem, BookItemDto>().ForMember(dest => dest.bookCategoryName, opt => opt.MapFrom(src => src.bookCategory.bookCategoryName)).ReverseMap();
            
             CreateMap<BookCategory, BookCategoryDto>().ReverseMap();
+ 
         }
     }
 }

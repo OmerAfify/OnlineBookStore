@@ -92,8 +92,16 @@
                 </div>
             </div>
             <div class="row cart-buttons">
-                <div class="col-6"><a asp-controller="Home" asp-action="Index" class="btn btn-solid">continue shopping</a></div>
-                <div class="col-6"><a asp-controller="Order" asp-action="Checkout" class="btn btn-solid">check out</a></div>
+                @if (Model.cartItemList.Count > 0)
+                {
+                    <div class="col-6"><a asp-controller="Home" asp-action="Index" class="btn btn-solid">continue shopping</a></div>
+                    <div class="col-6"><a asp-controller="Order" asp-action="Checkout" class="btn btn-solid">check out</a></div>
+                }
+                else
+                {
+                    <div class="col-6"><a asp-controller="Home" asp-action="Index" class="btn btn-solid">Add Books to Cart</a></div>
+
+                }
             </div>
         </div>
     </section>

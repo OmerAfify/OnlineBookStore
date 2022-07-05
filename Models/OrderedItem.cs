@@ -9,7 +9,6 @@ namespace OnlineBookStore.Models
     {
         public int orderDetailsId { get; set; }
         public OrderDetails orderDetails { get; set; }
-
         public int bookItemId { get; set; }
         public BookItem bookItem { get; set; }
         public int totalItemQuantity { get; set; }

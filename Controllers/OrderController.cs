@@ -28,19 +28,31 @@ namespace OnlineBookStore.Controllers
 
         public IActionResult Checkout()
         {
+
+            ShoppingCart shoppingCart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("shoppingCart");
+
+            if (shoppingCart == null)
+                shoppingCart = new ShoppingCart() { cartItemList = new List<CartItem>() { } };
+
             OrderDetailsAndShoppingCartViewModel vm = new OrderDetailsAndShoppingCartViewModel()
             {
                 orderDetails = new OrderDetails() { },
-                shoppingCart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("shoppingCart")
+                shoppingCart = shoppingCart
             };
 
             return View(vm);
         }
 
 
+        [HttpPost]
         public IActionResult PLaceOrder(OrderDetails orderDetails)
         {
+            if (ModelState.IsValid) { 
             var shoppingCart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("shoppingCart");
+
+                if (shoppingCart == null)
+                    shoppingCart = new ShoppingCart() { cartItemList = new List<CartItem>() { } };
+
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             Order order = new Order()
@@ -56,8 +68,6 @@ namespace OnlineBookStore.Controllers
             orderDetails.totalQuantity = shoppingCart.totalShoppingCartQuantity;
             _orderService.addOrderDetails(orderDetails);
 
-
-
             foreach(var item in shoppingCart.cartItemList) {
                 OrderedItem orderedItem = new OrderedItem()
                 {
@@ -67,21 +77,41 @@ namespace OnlineBookStore.Controllers
                     totalItemQuantity = item.totalItemQuantity
 
                 }; _orderService.addOrderedItem(orderedItem);
-            }
-
-
+            }          
+            HttpContext.Session.Remove("shoppingCart");
             return RedirectToAction("OrderSuccess");
+
+            }
+            else
+            {
+                OrderDetailsAndShoppingCartViewModel vm = new OrderDetailsAndShoppingCartViewModel()
+                {
+                    orderDetails =orderDetails,
+                    shoppingCart = HttpContext.Session.GetObjectFromJson<ShoppingCart>("shoppingCart")
+                };
+                return View("Checkout", vm);
+            }
         }
+
+
 
        public IActionResult OrderSuccess()
         {
-
             return View();
         }
+
+
+
          public IActionResult TrackOrders()
         {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            return View();
+            var orders = _orderService.viewUsersOrders(userId);
+
+            if (orders == null)
+                orders = new List<Order>() { };
+
+            return View(orders);
         }
 
 

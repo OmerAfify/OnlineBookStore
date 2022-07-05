@@ -13,6 +13,7 @@ namespace OnlineBookStore.Models
 
         public virtual OrderDetails orderDetails { get; set; }
 
+
         public int orderStatusId { get; set; }
         public virtual OrderStatus orderStatus { get; set; }
 

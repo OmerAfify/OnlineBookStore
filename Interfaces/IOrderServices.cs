@@ -11,5 +11,6 @@ namespace OnlineBookStore.Interfaces
         public void addOrder(Order order);
         public void addOrderDetails(OrderDetails orderDetails);
         public void addOrderedItem(OrderedItem orderItem);
+        public List<Order> viewUsersOrders(string userId);
     }
 }
