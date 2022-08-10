@@ -21,45 +21,49 @@ namespace OnlineBookStore
 {
     public class Startup
     {
+       public IConfiguration Configuration { get; }
+
+
+
+        //consstructor
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
-
-           // Ignore loops and do not serialize navigation objects
-        services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+           /*Ignore loops and do not serialize navigation objects*/
+            services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
 
             
-services.AddControllersWithViews()
-    .AddNewtonsoftJson(options => {
-        options.SerializerSettings.Formatting = Formatting.Indented;
-    });
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options => {
+                    options.SerializerSettings.Formatting = Formatting.Indented;
+                });
 
 
+
+            /*AutoMapper*/
             services.AddAutoMapper(typeof(Startup));
 
-            //EndabilingSession
-            services.AddSession();
-            services.AddHttpContextAccessor();
-            services.AddDistributedMemoryCache();
 
-
-
-            //Dependency Injection
-           // services.AddControllersWithViews();
+            /*Dependency Injection for DB Context + connection string*/
             services.AddDbContext<OnlineBookStoreDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            /*Dependency Injection for ather classes + interfaces*/
+             services.AddScoped<IBookItemServices, BookItemServices>();
+             services.AddScoped<IBookCategoryServices, BookCategoryServices>();
+             services.AddScoped<ISliderServices, SliderServices>();
+             services.AddScoped<IOrderServices, OrderServices>();
 
-            //Idenity Framework service
+
+            /*Idenity Framework service*/
             services.AddIdentity<ApplicationIdentiyUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 8;
@@ -68,14 +72,12 @@ services.AddControllersWithViews()
             }).AddEntityFrameworkStores<OnlineBookStoreDbContext>();
 
 
-        
+            /*Endabiling Session*/
+            services.AddSession();
+            services.AddHttpContextAccessor();
+            services.AddDistributedMemoryCache();
 
-
-            services.AddScoped<IBookItemServices, BookItemServices>();
-            services.AddScoped<IBookCategoryServices, BookCategoryServices>();
-            services.AddScoped<ISliderServices, SliderServices>();
-            services.AddScoped<IOrderServices, OrderServices>();
-
+            /*Cookies Settings*/
             services.ConfigureApplicationCookie(options => {
 
                 options.AccessDeniedPath = "/User/AccessDenied";
@@ -92,6 +94,8 @@ services.AddControllersWithViews()
 
         }
 
+
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -105,6 +109,9 @@ services.AddControllersWithViews()
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+
+            /*Pipelines Middlewares*/
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
@@ -114,30 +121,32 @@ services.AddControllersWithViews()
             app.UseSession();
 
             app.UseAuthentication();
+
             app.UseAuthorization();
 
-        
-
+           
+            /*routing middlewares*/
             app.UseEndpoints(endpoints =>
             {
-                       endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                
+
                 endpoints.MapControllerRoute(
-                    name: "areas",
-                    pattern: "{area=exists}/{controller=Home}/{action=Index}");
-        
-         
-                
-                   });
-  
-                
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}");
 
-            });
+
+                endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                });
+
+
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+
+                });
+
         }
     }
 }

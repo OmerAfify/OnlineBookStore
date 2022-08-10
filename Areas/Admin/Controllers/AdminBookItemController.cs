@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnlineBookStore.APIs;
 using OnlineBookStore.Business_Layer;
+using OnlineBookStore.Helpers;
 using OnlineBookStore.Interfaces;
 using OnlineBookStore.Models;
 using OnlineBookStore.ViewModels;
@@ -20,6 +22,8 @@ namespace OnlineBookStore.Areas.Admin.Controllers
 
         private IBookItemServices bookItemServices{get; set;}
         private IBookCategoryServices bookCategoryServices { get; set;}
+
+        private ImagesUploaderHelper _helper = new ImagesUploaderHelper();
 
 
 
@@ -40,9 +44,7 @@ namespace OnlineBookStore.Areas.Admin.Controllers
 
         public IActionResult AddBookItem()
         {
-
-            // ViewBag.bookCategoriesList = bookItemService.GetBookCategoriesList().ToList();
-            
+    
             BookItemAndBookCategoriesViewModel vm = new BookItemAndBookCategoriesViewModel()
             {
                 bookItem = new BookItem() { bookItemId=0},
@@ -70,6 +72,11 @@ namespace OnlineBookStore.Areas.Admin.Controllers
         public IActionResult DeleteBookItem(int id)
         {
 
+            var image = bookItemServices.GetBookItemById(id).bookItemImageName;
+
+            if (image != null)
+                _helper.DeleteImage(@"wwwRoot\UploadedFiles\Images\BookItemsImages\", image);
+
             bookItemServices.DeleteBookItem(id);
             return RedirectToAction("BookItemsList");
 
@@ -82,25 +89,22 @@ namespace OnlineBookStore.Areas.Admin.Controllers
 
             if (ModelState.IsValid) {
 
-                //Image raising
-          
                
             foreach (var file in Files)
             {
-                if (file.Length > 0)
+
+                if (file.Length > 0 && file!=null)
                 {
-                    string ImageName = Guid.NewGuid().ToString() + ".jpg";
-                    var filepath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwRoot\UploadedFiles\\Images\BookItemsImages", ImageName);
-               
-                    using (var stream = System.IO.File.Create(filepath))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
-                    bookItem.bookItemImageName = ImageName;
+                        if (bookItem.bookItemImageName != null)
+                        {
+                            _helper.DeleteImage(@"wwwRoot\UploadedFiles\Images\BookItemsImages\", bookItem.bookItemImageName);
+                        }
+
+                        var imageName = await _helper.UploadImage(file, @"wwwRoot\UploadedFiles\Images\BookItemsImages\");
+                        bookItem.bookItemImageName = imageName;
+
                 }
             }
-
-                
 
                 //Saving adding or editing Data to the DB 
                 if (bookItem.bookItemId != 0)

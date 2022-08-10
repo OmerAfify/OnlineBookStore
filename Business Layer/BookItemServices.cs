@@ -64,7 +64,6 @@ namespace OnlineBookStore.Business_Layer
                     _context.Entry(item).State = EntityState.Modified;
 
                     //var oldItem = _context.Tb_BookItem.Where(i => i.bookItemId == item.bookItemId).FirstOrDefault();
-
                     //oldItem.bookItemName = item.bookItemName;
                     //oldItem.salesPrice = item.salesPrice;
                     //oldItem.purchasePrice = item.purchasePrice;
@@ -116,14 +115,12 @@ namespace OnlineBookStore.Business_Layer
         //related is implemented by having same range of price between -20 itemsprice +20 
         public IEnumerable<BookItem> GetRelatedBookItemsList(BookItem bookItem)
         {
-
             var maxPrice = bookItem.purchasePrice + 20;
             var minPrice = bookItem.purchasePrice - 20;
 
             var relatedBookItemsList = _context.Tb_BookItem.
                           Where(b =>b.bookItemId !=bookItem.bookItemId && b.purchasePrice > minPrice && b.purchasePrice < maxPrice);
           
-
             return relatedBookItemsList;
 
         }

@@ -17,6 +17,7 @@ namespace OnlineBookStore.APIs
 
         private IBookItemServices bookItemServices;
         private IMapper _mapper;
+
         public BookItemApiController(IBookItemServices bookItemServices, IMapper mapper)
         {
             this.bookItemServices = bookItemServices;
@@ -24,36 +25,44 @@ namespace OnlineBookStore.APIs
         }
 
         // GET: api/<BookItemApiController>
-        [HttpGet("/api/BookItems")]
-        public List<BookItemDto> Get()
+        [HttpGet("/api/BookItemsDto")]
+        public List<BookItemDto> GetAllBookItemsDto()
         {
              var bookItemsList = bookItemServices.GetBookItemsList().ToList();
                return _mapper.Map<List<BookItemDto>>(bookItemsList);
         }
 
         // GET api/<BookItemApiController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("/api/BookItemDto/{id}")]
+        public BookItemDto GetBookItemByIdDto(int id)
         {
-            return "value";
+            var bookItem = bookItemServices.GetBookItemById(id);
+            return _mapper.Map<BookItemDto>(bookItem);
         }
 
-        // POST api/<BookItemApiController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+
+        [HttpPost("/api/AddBookItem")]
+        public string AddBookItem([FromBody] BookItem value)
         {
+            bookItemServices.AddBookItem(value);
+            return "done";  
         }
 
-        // PUT api/<BookItemApiController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+
+        [HttpPut("/api/editBookItem")]
+        public BookItem EditBookItem([FromBody] BookItem bookItem)
         {
+            bookItemServices.EditBookItemData(bookItem);
+            return bookItem;
         }
+
+
 
         // DELETE api/<BookItemApiController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete("/api/deleteBookItem/{id}")]
         public void Delete(int id)
         {
+            bookItemServices.DeleteBookItem(id);
         }
     }
 }
