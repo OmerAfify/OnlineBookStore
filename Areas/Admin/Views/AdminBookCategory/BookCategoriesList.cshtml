@@ -1,6 +1,6 @@
-﻿ 
-@model List<BookItem> 
- <!-- BEGIN: Content-->
+﻿
+@model List<BookCategory>
+<!-- BEGIN: Content-->
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -38,30 +38,28 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Books List  ( @Model.Count )</h4>
+                            <h4 class="card-title">Books Categories List  ( @Model.Count )</h4>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <p class="card-text">Here you can find the list of available books, Add a new book, delete an existing book or editing an existing book's data.</p>
-                          
-                          
-                                <a asp-controller="AdminBookItem" asp-action="AddBookItem">
-                                    <button class="btn btn-success col-12">Add a new Book</button>
+                                <p class="card-text">Here you can find the list of categories, Add a new category, delete an existing category or update an existing category's data.</p>
+
+
+                                <a asp-controller="AdminBookCategory" asp-action="AddBookCategory">
+                                    <button class="btn btn-success col-12">Add a new Category</button>
                                 </a>
 
-                      
-    
-    <!-- Table with outer spacing -->
+
+
+                                <!-- Table with outer spacing -->
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Book ID</th>
-                                                <th>Books Image</th>
-                                                <th>Book Name</th>
-                                                <th>Sales Price</th>
-                                                <th>Purchasing Price</th>
-                                                <th>Category</th>
+                                                <th>Cat ID</th>
+                                                <th>Cat Name</th>
+                                                <th>Cat Description</th>
+                                                <th>No of Books</th>
                                                 <th></th>
                                                 <th></th>
                                             </tr>
@@ -71,47 +69,41 @@
                                             {
 
                                             <tr>
-                                                <th scope="row">@item.bookItemId</th>
-                                                <td><img src="@string.Format("/UploadedFiles/Images/BookItemsImages/{0}",item.bookItemImageName)" style="width:100px; height:150px" /></td>
-                                                <td>@item.bookItemName</td>
-                                                <td>@item.salesPrice</td>
-                                                <td>@item.purchasePrice</td>
-                                                <td>@item.bookCategory.bookCategoryName</td>
-                                                <td><a asp-controller="AdminBookItem" asp-action="EditBookItem" asp-route-id="@item.bookItemId"> <button class="btn btn-primary">Edit</button></a></td>
-                                          
+                                                <th scope="row">@item.bookCategoryId</th>
+                                                <td>@item.bookCategoryName</td>
+                                                <td>@item.bookCategoryDescription</td>
+                                                <td>@item.bookItems.Count()</td>
+                                                <td><a asp-controller="AdminBookCategory" asp-action="UpdateBookCategory" asp-route-id="@item.bookCategoryId"> <button class="btn btn-primary">Edit</button></a></td>
                                                 <td>
 
                                                     <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="@string.Format("#_id{0}",item.bookItemId)">
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="@string.Format("#_id_cat_{0}",item.bookCategoryId)">
                                                         Delete
                                                     </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="@string.Format("_id{0}",item.bookItemId)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                    <div class="modal fade" id="@string.Format("_id_cat_{0}",item.bookCategoryId)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="Header_@item.bookItemId">Delete Book Item</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Delete Category</h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <span style="float:left;">?Are you sure you want to delete @item.bookItemName</span>
-                                                                    <img src="@string.Format("/UploadedFiles/Images/BookItemsImages/{0}",item.bookItemImageName)" style="width:100px; height:150px; float:right;" />
-
+                                                                   Are you sure you want to delete @item.bookCategoryName ? all books of this category type will be deleted too.
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                                                                    <a asp-controller="AdminBookItem" asp-action="DeleteBookItem" asp-route-id="@item.bookItemId">
+                                                                   
+                                                                    <a asp-controller="AdminBookCategory" asp-action="DeleteBookCategory" asp-route-id="@item.bookCategoryId">
                                                                         <button type="button" class="btn btn-danger">Delete</button>
                                                                     </a>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
 
 
                                                 </td>
@@ -128,7 +120,7 @@
                                 </div>
                             </div>
 
-                       
+
                         </div>
                     </div>
                 </div>
@@ -139,3 +131,4 @@
     </div>
 </div>
 <!-- END: Content-->
+

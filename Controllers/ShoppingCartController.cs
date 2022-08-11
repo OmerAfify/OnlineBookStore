@@ -57,7 +57,7 @@ namespace OnlineBookStore.Controllers
                     bookItemId = bookItem.bookItemId,
                     bookItem = bookItem,
                     totalItemQuantity = 1,
-                    totalItemPrice = bookItem.purchasePrice
+                    totalItemPrice = (int)bookItem.purchasePrice
                 };
 
                 shoppingCart.cartItemList.Add(CartItemToAdd);
@@ -65,7 +65,7 @@ namespace OnlineBookStore.Controllers
             else
             {
                 CartItemToAdd.totalItemQuantity = CartItemToAdd.totalItemQuantity + 1;
-                CartItemToAdd.totalItemPrice = CartItemToAdd.totalItemQuantity * bookItem.purchasePrice;
+                CartItemToAdd.totalItemPrice = (int)CartItemToAdd.totalItemQuantity * (int)bookItem.purchasePrice;
             }
 
             shoppingCart.totalShoppingCartQuantity = shoppingCart.cartItemList.Sum(q => q.totalItemQuantity);

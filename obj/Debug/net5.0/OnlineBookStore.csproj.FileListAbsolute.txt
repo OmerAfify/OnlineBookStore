@@ -94,3 +94,5 @@ D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug
 D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\Order\OrderSuccess.cshtml.g.cs
 D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Views\Order\TrackOrders.cshtml.g.cs
 D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminHome\Index.cshtml.g.cs
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminBookCategory\AddBookCategory.cshtml.g.cs
+D:\6-Programming and courses\New Projects\Asp.net Core\OnlineBookStore\obj\Debug\net5.0\Razor\Areas\Admin\Views\AdminBookCategory\BookCategoriesList.cshtml.g.cs

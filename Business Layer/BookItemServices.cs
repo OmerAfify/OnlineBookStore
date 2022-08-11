@@ -63,13 +63,6 @@ namespace OnlineBookStore.Business_Layer
 
                     _context.Entry(item).State = EntityState.Modified;
 
-                    //var oldItem = _context.Tb_BookItem.Where(i => i.bookItemId == item.bookItemId).FirstOrDefault();
-                    //oldItem.bookItemName = item.bookItemName;
-                    //oldItem.salesPrice = item.salesPrice;
-                    //oldItem.purchasePrice = item.purchasePrice;
-                    //oldItem.bookCategoryId = item.bookCategoryId;
-
-
                     _context.SaveChanges();
 
                     transaction.Commit();

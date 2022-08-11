@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineBookStore.Models;
 
 namespace OnlineBookStore.Migrations
 {
     [DbContext(typeof(OnlineBookStoreDbContext))]
-    partial class OnlineBookStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220810202419_Book Category Description is Added")]
+    partial class BookCategoryDescriptionisAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

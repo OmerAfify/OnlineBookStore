@@ -9,6 +9,7 @@ namespace OnlineBookStore.Models
 {
     public class BookItem
     {
+        [Required]
         public int bookItemId { get; set; }
      
         [Required (ErrorMessage = "please enter Book items name")]
@@ -17,12 +18,12 @@ namespace OnlineBookStore.Models
 
         [Required(ErrorMessage = "please enter sales Price")]
         [DataType(DataType.Currency)]
-        public decimal salesPrice { get; set; }
+        public decimal? salesPrice { get; set; }
 
 
         [Required(ErrorMessage = "please enter purchase price")]
         [DataType(DataType.Currency)]
-        public decimal purchasePrice { get; set; }
+        public decimal? purchasePrice { get; set; }
 
         public string bookItemImageName { get; set; }
 

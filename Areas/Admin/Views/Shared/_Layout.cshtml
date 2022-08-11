@@ -36,6 +36,9 @@
     <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css-rtl/pages/dashboard-analytics.css">
     <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css-rtl/pages/card-analytics.css">
     <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css-rtl/plugins/tour/tour.css">
+    <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css-rtl/pages/app-email.css">
+
+
     <!-- END: Page CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="~/Admin/app-assets/css-rtl/custom-rtl.css">
@@ -58,28 +61,29 @@
                         <ul class="nav navbar-nav">
                             <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
                         </ul>
-                     
-                    
+
+
                     </div>
                     <ul class="nav navbar-nav float-right">
-                   
+
                         <li class="dropdown dropdown-user nav-item">
                             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 <div class="user-nav d-sm-flex d-none">
-                                <span class="user-name text-bold-600">Welcome USER</span>
-                                <span class="user-status">Available</span></div>
-                                <span><img class="round" src="~/Admin/app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar"
-                                           height="40" width="40"></span>
+                                    <span class="user-name text-bold-600">Welcome USER</span>
+                                    <span class="user-status">Available</span>
+                                </div>
+                                <span>
+                                    <img class="round" src="~/Admin/app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar"
+                                         height="40" width="40">
+                                </span>
                             </a>
-                         </li>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </nav>
-     <!-- END: Header-->
-
-
+    <!-- END: Header-->
     <!-- BEGIN: Main Menu-->
     <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
@@ -90,7 +94,7 @@
                         <h2 class="brand-text mb-0">BookStore</h2>
                     </a>
                 </li>
-             
+
             </ul>
         </div>
         <div class="shadow-bottom"></div>
@@ -142,15 +146,15 @@
                     <a href="#"><i class="feather icon-folder"></i><span class="menu-title" data-i18n="Category settings">Category settings</span></a>
                     <ul class="menu-content" style="">
                         <li class="is-shown">
-                            <a href="page-coming-soon.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Show Orders">Show Categories List</span></a>
-                            <a href="page-coming-soon.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Show Orders">Add a New Category Item</span></a>
+                            <a asp-controller="AdminBookCategory" asp-action="BookCategoriesList"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Show Orders">Show Categories List</span></a>
+                            <a asp-controller="AdminBookCategory" asp-action="AddBookCategory"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Show Orders">Add a New Category Item</span></a>
                             <a href="page-coming-soon.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Show Orders">Edit a Category Details</span></a>
                             <a href="page-coming-soon.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Show Orders">Delete a Category with its products</span></a>
                         </li>
 
                     </ul>
-                </li>    
-                
+                </li>
+
                 <!--Sliders Options-->
                 <li class="navigation-header">
                     <span>Slider Settings</span>
@@ -169,7 +173,7 @@
                 </li>
 
 
-  
+
 
                 <!--Orders Options-->
 
@@ -195,11 +199,11 @@
     </div>
     <!-- END: Main Menu-->
 
-   
+
     @RenderBody();
 
     @*<div class="sidenav-overlay"></div>
-    <div class="drag-target"></div>*@
+        <div class="drag-target"></div>*@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
@@ -212,26 +216,31 @@
     <!-- BEGIN: Vendor JS-->
     <script src="~/Admin/app-assets/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
-
     <!-- BEGIN: Page Vendor JS-->
     <script src="~/Admin/app-assets/vendors/js/charts/apexcharts.min.js"></script>
     <script src="~/Admin/app-assets/vendors/js/extensions/tether.min.js"></script>
     <script src="~/Admin/app-assets/vendors/js/extensions/shepherd.min.js"></script>
     <!-- END: Page Vendor JS-->
 
+
     <!-- BEGIN: Theme JS-->
     <script src="~/Admin/app-assets/js/core/app-menu.js"></script>
     <script src="~/Admin/app-assets/js/core/app.js"></script>
     <script src="~/Admin/app-assets/js/scripts/components.js"></script>
     <!-- END: Theme JS-->
-    <!-- BEGIN: Page JS-->
+
+
+    <!-- BEGIN: Email Pop-Up -->
    
-    @*
-        popup is here
-        <script src="~/Admin/app-assets/js/scripts/pages/dashboard-analytics.js"></script>*@
+    <script src="~/Admin/app-assets/js/scripts/pages/app-email.js"></script>
+    <!-- END: Email Pop Up-->
 
 
-    <!-- END: Page JS-->
+    <!-- Begin: J-Query form validations for client side validation-->
+    <script src="~/Admin/src/js/core/libraries/jquery.min.js"></script>
+    <script src="~/Admin/app-assets/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <script src="~/Admin/app-assets/vendors/js/jquery.validate.unobtrusive.min.js_3.2.11/cdnjs/jquery.validate.unobtrusive.min.js"></script>
+    <!-- END:J-Query form validations for client side validation-->
 
 </body>
 <!-- END: Body-->
